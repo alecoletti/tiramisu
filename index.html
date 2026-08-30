@@ -197,6 +197,27 @@
       margin-top: 1.2rem;
       letter-spacing: 0.04em;
     }
+    /* ── Responsive ── */
+    @media (max-width: 480px) {
+      .page    { padding: 0 1.25rem; }
+      header   { padding: 3rem 0 1.5rem; }
+      h1       { font-size: 2.6rem; }
+      .ornament { margin: 1.2rem 0; }
+      .lang-block { padding: 1.6rem 0 1.6rem 1.1rem; }
+      .hero img { width: 92vw; }
+    }
+
+    @media (min-width: 481px) and (max-width: 768px) {
+      header { padding: 4rem 0 1.8rem; }
+      .ornament { margin: 1.5rem 0; }
+    }
+
+    /* Respect reduced-motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      .fi, .fi-1, .fi-2, .fi-3 { animation: none; }
+      .hero img { transition: none; }
+      .lang-block { transition: none; }
+    }
   </style>
 </head>
 <body>
