@@ -1,0 +1,12 @@
+/build/
+/.idea/
+/bin/
+.env
+/.idea
+/tmp
+/volume
+.DS_Store
+/.task/
+.envrc
+/pkg/mpx/client_integration_test.go
+AGENTS.md
