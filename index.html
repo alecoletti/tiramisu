@@ -139,6 +139,7 @@
       width: min(460px, 88vw);
       height: auto;
       mix-blend-mode: multiply; /* blends white bg into page cream */
+      filter: url(#paper-grain);
       transition: transform 0.55s cubic-bezier(.34,1.28,.64,1);
     }
 
@@ -221,6 +222,24 @@
   </style>
 </head>
 <body>
+
+  <!-- SVG filter: watercolour paper grain + subtle warp -->
+  <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute">
+    <defs>
+      <filter id="paper-grain" x="-2%" y="-2%" width="104%" height="104%" color-interpolation-filters="sRGB">
+        <!-- Subtle paper-fibre warp -->
+        <feTurbulence type="turbulence" baseFrequency="0.022" numOctaves="2" seed="4" result="warp"/>
+        <feDisplacementMap in="SourceGraphic" in2="warp" scale="1.8"
+                           xChannelSelector="R" yChannelSelector="G" result="warped"/>
+        <!-- Watercolour paper grain -->
+        <feTurbulence type="fractalNoise" baseFrequency="0.62" numOctaves="4"
+                      stitchTiles="stitch" result="grain"/>
+        <feColorMatrix type="saturate" values="0" in="grain" result="gray-grain"/>
+        <!-- Blend grain onto image in soft-light — adds texture without blowing highlights -->
+        <feBlend in="warped" in2="gray-grain" mode="soft-light"/>
+      </filter>
+    </defs>
+  </svg>
   <div class="page">
 
     <header class="fi">
